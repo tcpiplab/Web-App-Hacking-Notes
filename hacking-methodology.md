@@ -1,8 +1,7 @@
-# Web Hacking 101,
-#### How to Make Money Hacking Ethically
-#### by Peter Yaworski
+# My Notes from Reading [Web Hacking 101][1],
 
-#### (Notes from Ch. 19, Getting Started)
+
+Web Hacking 101 was written by [Peter Yaworski][2]. These are my notes from Ch. 19, "Getting Started".
 
 
 ### HIS SUMMARY:
@@ -28,8 +27,8 @@
 ## MY SUMMARY:
 
 ### Enumerate sub domains
- * knockpy
- * enumall
+ * [knockpy][3]
+ * [enumall.py][4] From [Jason Haddix][5]
 
 ### Crawl the main site
  * Burp Suite
@@ -117,3 +116,9 @@ OAuth?
 
 ### Paywalls
 * Explore paid functionality, which most other hackers likely avoid.
+
+[1]: https://leanpub.com/web-hacking-101
+[2]: https://leanpub.com/u/peteryaworski
+[3]: https://github.com/guelfoweb/knock
+[4]: https://github.com/jhaddix/domain
+[5]: https://twitter.com/Jhaddix
