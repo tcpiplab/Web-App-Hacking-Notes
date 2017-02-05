@@ -111,7 +111,7 @@ OAuth?
 1. Keys?
 1. Google search:
   ```
-  site:example.com .bash_history, etc.)
+  site:example.com .bash_history
   ```
 
 ### Paywalls
