@@ -1,18 +1,18 @@
 # Web Hacking 101,
-## How to Make Money Hacking Ethically
-## by Peter Yaworski
+#### How to Make Money Hacking Ethically
+#### by Peter Yaworski
 
-## Notes from Ch. 19 Getting Started
+#### (Notes from Ch. 19, Getting Started)
 
 
 ### HIS SUMMARY:
 
 1. Enumerate all sub domains (if they are in scope) using KnockPy, enumall Recon-ng script and IPV4info.com
 
-```bash
-knockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt
+  ```bash
+  knockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt
 
-```
+  ```
 
 2. Start ZAP proxy, visit the main target site and perform a Forced Browse to discover files and directories
 3. Map technologies used with Wappalyzer and Burp Suite (or ZAP) proxy
@@ -49,65 +49,71 @@ knockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt
  1. Attempt passing unauthorized file IDs
 
 ### Map functionality to vulnerability types
- - Set up accounts
- - OAuth?
- - 2fA?
- - Multiple users per account? Complex permissions model?
- - Inter-user messaging allowed?
- - Sensitive documents stored or allowed to be uploaded?
- - Profile pictures allowed?
- - HTML allowed, or WSISYG editor?
- - Bulk importer accepting XML/XXE document?
+1. Set up accounts
+OAuth?
+1. 2fA?
+1. Multiple users per account? Complex permissions model?
+1. Inter-user messaging allowed?
+1. Sensitive documents stored or allowed to be uploaded?
+1. Profile pictures allowed?
+1. HTML allowed, or WSISYG editor?
+1. Bulk importer accepting XML/XXE document?
 
-Application testing
- - Create content, users, teams, etc.
- - Inject payloads everywhere
- - - E.g., <img src=”x” onerror=alert(1)>
- - - Inject exploit code to vulnerable JS framework
- - - How is my content rendered?
- - - - Are special characters encoded?
- - - - Are attributes stripped? (What does this one mean? URL params?)
- - - - Does XSS image payload execute?
- - Test each area
- - Analyze HTTP requests and responses
- - - Enumerate or access URLs to sensitive files as anonymous user?
- - - If WYSIWYG, add HTML to POST requests
- - - CSRF tokens present in HTTP requests that change data? Tokens validated? (CSRF)
- - - Can manipulate ID parameters?  (Application Logic)
- - - Can repeat requests across two separate user accounts? (Application Logic)
- - - Any XML upload fields (XXE)?
- - - Notice any URL patterns containing record IDs?  (Application Logic, HPP)
- - - Any URLs with redirect related parameter? (Open Redirect)
- - - Any requests which echo URL parameters in the response? (CRLF, XSS, Open Redirect)
- - - Server information disclosed? Find unpatched vulnerabilities
- - - Did ZAP discover anything interesting like .htpasswd or config files?
- - - Did Burp discover anything interesting?
+### Application testing
+1. Create content, users, teams, etc.
+1. Inject payloads everywhere
+  * E.g., `<img src=”x” onerror=alert(1)>`
+1. Inject exploit code to vulnerable JS framework
+1. How is my content rendered?
+  1. Are special characters encoded?
+  1. Are attributes stripped? (What does this one mean? URL params?)
+  1. Does XSS image payload execute?
+1. Test each area
+1. Analyze HTTP requests and responses
+1. Enumerate or access URLs to sensitive files as anonymous user?
+1. If WYSIWYG, add HTML to POST requests
+1. CSRF tokens present in HTTP requests that change data? Tokens validated? (CSRF)
+1. Can manipulate ID parameters?  (Application Logic)
+1. Can repeat requests across two separate user accounts? (Application Logic)
+1. Any XML upload fields (XXE)?
+1. Notice any URL patterns containing record IDs?  (Application Logic, HPP)
+1. Any URLs with redirect related parameter? (Open Redirect)
+1. Any requests which echo URL parameters in the response? (CRLF, XSS, Open Redirect)
+1. Server information disclosed? Find unpatched vulnerabilities
+1. Did ZAP discover anything interesting like .htpasswd or config files?
+1. Did Burp discover anything interesting?
 
-Digging deeper
- - Combine sub-domain lists from KnockPy and enumall scans as input to EyeWitness for screenshots
- - - Accessible web panels?
- - - Continuous integration servers?
- - - Administrative consoles?
- - Pass KnockPy list of IPs and pass it to Nmap (namp -sSV -oA OUTPUTFILE -T4 -iL IPS.csv)
- - - Open ports?
- - - Vulnerable services?
+### Digging deeper
+1. Combine sub-domain lists from KnockPy and enumall scans as input to EyeWitness for screenshots
+1. Accessible web panels?
+1. Continuous integration servers?
+1. Administrative consoles?
+1. Pass KnockPy list of IPs and pass it to `nmap`:
+  ```shell
+  namp -sSV -oA OUTPUTFILE -T4 -iL IPS.csv
+  ```
+1. Open ports?
+1. Vulnerable services?
 
-Mobile applications
- - Proxy your phone traffic through Burp while using the mobile app (if no SSL pinning)
- - Explore API endpoints
- - Mobile Security Framework
- - JD-GUI
+### Mobile applications
+1. Proxy your phone traffic through Burp while using the mobile app (if no SSL pinning)
+1. Explore API endpoints
+1. Mobile Security Framework
+1. JD-GUI
 
-APIs (mobile or not)
- - Review developer documentation looking for abnormalities
- - Does API sanitize input?
+### APIs (mobile or not)
+1. Review developer documentation looking for abnormalities
+1. Does API sanitize input?
 
-Public leaks
- - GitRob
- - - Passwords?
- - - Config files?
- - - Keys?
- - Google search (site:example.com .bash_history, etc.)
+### Look for Public Leaks
+1. GitRob
+1. Passwords?
+1. Config files?
+1. Keys?
+1. Google search:
+  ```
+  site:example.com .bash_history, etc.)
+  ```
 
-Paywalls
- - Explore paid functionality, which most other hackers likely avoid
+### Paywalls
+* Explore paid functionality, which most other hackers likely avoid.
