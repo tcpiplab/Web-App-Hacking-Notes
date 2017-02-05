@@ -1,38 +1,54 @@
-Web Hacking 101,
-How to Make Money Hacking Ethicallyby Peter Yaworski
+# Web Hacking 101,
+## How to Make Money Hacking Ethically
+## by Peter Yaworski
 
-Notes from Ch. 19 Getting Started
-
-
-HIS SUMMARY:
-
-1. Enumerate all sub domains (if they are in scope) using KnockPy, enumall Recon-ng script and IPV4info.com```bashknockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt```2. Start ZAP proxy, visit the main target site and perform a Forced Browse to discover files and directories3. Map technologies used with Wappalyzer and Burp Suite (or ZAP) proxy4. Explore and understand available functionality, noting areas that correspond tovulnerability types5. Begin testing functionality mapping vulnerability types to functionality provided6. Automate EyeWitness and Nmap scans from the KnockPy and enumall scans7. Review mobile application vulnerabilities8. Test the API layer, if available, including otherwise inaccessible functionality9. Look for private information in GitHub repos with GitRob10. Subscribe to the site and pay for the additional functionality to test
+## Notes from Ch. 19 Getting Started
 
 
-MY SUMMARY:
+### HIS SUMMARY:
 
-Enumerate sub domains
- - knockpy
- - enumall
+1. Enumerate all sub domains (if they are in scope) using KnockPy, enumall Recon-ng script and IPV4info.com
 
-Crawl the main site
- - Burp Suite
- - ZAP Proxy
+```bash
+knockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt
 
-Manually explore the main site to figure out the site's stack
- - Wappalyzer plug-in
- - Burp Suite
- - If it has a front-end JS library which interact with a back-end API
- - - Find out if it has known vulnerabilities
- - - Do API calls return sensitive data which is not rendered?
- - Check proxy to see:
- - - Where files are being served from
- - - JS files hosted elsewhere?
- - - Calls to 3rd party services?
- - Look for JSON files
- - Attempt passing unauthorized file IDs
+```
 
-Map functionality to vulnerability types
+2. Start ZAP proxy, visit the main target site and perform a Forced Browse to discover files and directories
+3. Map technologies used with Wappalyzer and Burp Suite (or ZAP) proxy
+4. Explore and understand available functionality, noting areas that correspond to vulnerability types
+5. Begin testing functionality mapping vulnerability types to functionality provided
+6. Automate EyeWitness and Nmap scans from the KnockPy and enumall scans
+7. Review mobile application vulnerabilities
+8. Test the API layer, if available, including otherwise inaccessible functionality
+9. Look for private information in GitHub repos with GitRob
+10. Subscribe to the site and pay for the additional functionality to test
+
+
+## MY SUMMARY:
+
+### Enumerate sub domains
+ * knockpy
+ * enumall
+
+### Crawl the main site
+ * Burp Suite
+ * ZAP Proxy
+
+### Manually explore the main site to figure out the site's stack
+ 1. Wappalyzer plug-in
+ 1. Burp Suite
+ 1. If it has a front-end JS library which interact with a back-end API
+   1. Find out if it has known vulnerabilities
+   1. Do API calls return sensitive data which is not rendered?
+ 1. Check proxy to see:
+   1. Where files are being served from
+   1. JS files hosted elsewhere?
+   1. Calls to 3rd party services?
+ 1. Look for JSON files
+ 1. Attempt passing unauthorized file IDs
+
+### Map functionality to vulnerability types
  - Set up accounts
  - OAuth?
  - 2fA?
