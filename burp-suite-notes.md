@@ -7,7 +7,7 @@ java -jar -Xmx2g Burp\ Suite\ Free\ Edition.app/Contents/java/app/burpsuite_free
 ```
 
 ## Fix the Cipher Suite problem:
-This is not actually from his video. But, after successfully installing Burp Suite, I encountered browser HTTPS errors because the Burp proxy and the target website (yahoo.com) could not agree on a cipher suite. Here's some packet detail that I grabbed with [Wireshark][3]. It shows yahoo's webserver offering my browser (which was actually the Burp proxy) a reasonable choice of three cipher suites.
+This is not actually from his video. But, after successfully installing Burp Suite, I encountered browser HTTPS errors because the Burp proxy and the target website (yahoo.com) could not agree on a cipher suite. Here's some packet detail that I grabbed with [Wireshark][3]. It shows yahoo's webserver offering my browser (which was actually the Burp proxy) a reasonable choice of three strong cipher suites. But Burp wasn't able to support any of them. I'm guessing this was due to the US government's well-known restrictions on exporting cryptographic technology.
 
 ```
 Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)
@@ -22,6 +22,8 @@ I easily solved the problem by downloading Oracle's [Java Cryptography Extension
 http://cybergibbons.com/security-2/burp-suite/missing-tls-ciphers-when-running-burp-suite/
 
 http://stackoverflow.com/questions/37741142/how-to-install-unlimited-strength-jce-for-java-8-in-os-x
+
+After installing the JCE and restarting Burp, the problem was gone.
 
 [1]: https://www.youtube.com/watch?v=N-IKHmGjf2c
 [2]: https://twitter.com/Jhaddix
