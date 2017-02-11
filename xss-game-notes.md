@@ -11,6 +11,7 @@ Level 1 can be exploited by injecting XSS code into either the form field or the
 Both of the above examples also work if you inject them into the URL and press the Go button (which is part of the fake browser). The only limitation I found was that code injected into the URL will not work if it has a semicolon. In the second example above, you could just omit the semicolon, since it is only a one-line script.
 
 But the attack does work through the URL if you just URL-encode the semicolon as `%3B`. Note that you'll have to prepend your attack code with: `?query=`. So you're concatenating three separate pieces:
+
 1. `https://xss-game.appspot.com/level1/frame`
 2. `?query=`
 3. `<script>alert("xss")%3B</script>`
