@@ -62,22 +62,30 @@ To get through this level you have to do these in order:
 
 1. Click on the "Sign up" link.
 2. On the next page the URL will have changed to this:
+
    ```code
    https://xss-game.appspot.com/level5/frame/signup?next=confirm
    ```
+
    In the URL, change the value of `next` from `confirm` to `javascript:alert(1)`.
 3. Click the "Go" button, which is part of the fake browser. Clicking this button changes the value of the `href` for the "Next >>" link. Before you click the "Go" button, if you hover over the "Next >>" link, the target shown in the hoverbox is:
+   
    ```code
    https://xss-game.appspot.com/level5/frame/confirm
    ```
+   
    And in fact the `href` value is a relative link, simply `confirm`. After changing `confirm` to `javascript:alert(1)`, the URL is now set to this:
+   
    ```code
    https://xss-game.appspot.com/level5/frame/signup?next=javascript:alert(1)
    ```
+   
    Click the "Go" button. Now if you hover over that same "Next >>" link, the target shown in the hoverbox is now just:
+   
    ```
    javascript:alert(1)
    ```
+   
    By the user having edited the URL manually, that link's `href` value had changed to the user's input.
 4. Click the "Next >>" link. The alert pops up and the game sets a new cookie and displays a banner saying that you may now go on to the next level.
 
