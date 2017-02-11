@@ -1,7 +1,7 @@
 # Notes on Google's [XSS Game][1] Web App
 
 ## Level 1
-Level 1 can be exploited by injecting XSS code into either the form field or the URL. Both of these examples work if you paste them into the form field and press the Search button:
+Level 1 is vulnerable to a Reflected XSS attack. It can be exploited by injecting XSS code into either the form field or the URL. Both of these examples work if you paste them into the form field and press the Search button:
 
 ```html
 <img src=x onerror="alert('xss')">
@@ -21,13 +21,16 @@ The full URL is now:
 https://xss-game.appspot.com/level1/frame?query=<script>alert("xss")%3B</script>
 ```
 
-
-
 ## Level 2
+Level 2 is about Stored (aka persistent) XSS. This level seems to have some filtering to prevent you from injecting `<script>` tags. But it does allow `<img>` tags. And `<img>` tags allow handlers (like `onerror`) which can contain Javascript:
 
 ```
-" onerror=alert('xss')/> <img src="cloud1.jpg">
+<img src="x" onerror="alert('xss')">
 ```
+
+Once that attack string is submitted through the form field, every time the page loads, our Javascript will run in the user's browser - any user - they just have to visit this page. This is why stored XSS is more dangerous than Reflected XSS.
+
+I could not figure out a way to inject the code directly into the URL.
 
 ## Level 3
 To get past Level 3 I had to use Safari (10.0.3) because Firefox (51.0.1) and Chrome (55.0.2883.95) both prevented the injection of a space, encoded or not, after the single quote. Here is the full URL I used to successfully pass Level 3 with Safari:
