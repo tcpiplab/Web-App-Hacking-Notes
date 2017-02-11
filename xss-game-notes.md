@@ -1,6 +1,6 @@
 # Notes on Google's [XSS Game][1] Web App
 
-## Level 1
+## [Level 1](https://xss-game.appspot.com/level1)
 Level 1 is vulnerable to a Reflected XSS attack. It can be exploited by injecting XSS code into either the form field or the URL. Both of these examples work if you paste them into the form field and press the Search button:
 
 ```html
@@ -21,7 +21,7 @@ The full URL is now:
 https://xss-game.appspot.com/level1/frame?query=<script>alert("xss")%3B</script>
 ```
 
-## Level 2
+## [Level 2](https://xss-game.appspot.com/level2)
 Level 2 is about Stored (aka persistent) XSS. This level seems to have some filtering to prevent you from injecting `<script>` tags. But it does allow `<img>` tags. And `<img>` tags allow handlers (like `onerror`) which can contain Javascript:
 
 ```
@@ -32,15 +32,17 @@ Once that attack string is submitted through the form field, every time the page
 
 I could not figure out a way to inject the code directly into the URL.
 
-## Level 3
+## [Level 3](https://xss-game.appspot.com/level3)
 To get past Level 3 I had to use Safari (10.0.3) because Firefox (51.0.1) and Chrome (55.0.2883.95) both prevented the injection of a space, encoded or not, after the single quote. Here is the full URL I used to successfully pass Level 3 with Safari:
 ```
 https://xss-game.appspot.com/level3/frame' onerror="alert('xss')"
 ```
 But I wanted to keep working with Firefox. So I stole Safari's cookie called "level3".
 I configured Safari to use the Burp proxy, then copied the name and value of the third cookie:
-```
-level1=f148716ef4ed1ba0f192cde4618f8dc5; level2=b5e530302374aa71cc3028c810b63641; level3=d5ce029d0680b3816a349da0d055fcfa
+```code
+level1=f148716ef4ed1ba0f192cde4618f8dc5;
+level2=b5e530302374aa71cc3028c810b63641;
+level3=d5ce029d0680b3816a349da0d055fcfa;
 ```
 Here's how to set a new cookie in FF or Chrome using the console in dev tools:
 ```javascript
@@ -48,9 +50,7 @@ document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa";
 ```
 Now you can advance to level 4 in FF or Chrome.
 
-## Level 4
-
-https://xss-game.appspot.com/level4
+## [Level 4](https://xss-game.appspot.com/level4)
 
 For Level 4 I had to look up somebody else's answer and play with it because it was not working as they described. Eventually I found that, in all three browsers, it only worked if you input it into the input field. It would not work on the URL.
 ```
