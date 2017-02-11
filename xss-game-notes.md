@@ -43,12 +43,15 @@ But I wanted to keep working with Firefox. So I copied Safari's cookie called "l
 1. I exploited Level 1 and 2 as described above.
 1. I visited the URL for level three, with the attack code appended, as shown above. When the `alert()` popped up, the game set a new cookie called `level3`.
 1. I copied the name and value of the third cookie:
+
   ```code
   level1=f148716ef4ed1ba0f192cde4618f8dc5;
   level2=b5e530302374aa71cc3028c810b63641;
   level3=d5ce029d0680b3816a349da0d055fcfa;
   ```
+  
   Here's how to set a new cookie in FF or Chrome using the console in dev tools:
+  
   ```javascript
   document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa";
   ```
