@@ -57,17 +57,31 @@ For Level 4 I had to look up somebody else's answer and play with it because it 
 ');alert();var b=('
 ```
 
-## Level 5
-I got through Level 5 with this URL:
-```
-https://xss-game.appspot.com/level5/frame/signup?next=javascript:alert(1)
-```
-But clicking the Go button next to the URL did not work. I had to actually click the "Next >>" button. That button, if you mouse over it, showed that it's target was:
-```
-javascript:alert(1)
-```
+## [Level 5](https://xss-game.appspot.com/level5)
+To get through this level you have to do these in order:
 
-By me having edited the URL manually, that button's href value had changed to my input.
+1. Click on the "Sign up" link.
+2. On the next page the URL will have changed to this:
+   ```code
+   https://xss-game.appspot.com/level5/frame/signup?next=confirm
+   ```
+   In the URL, change the value of `next` from `confirm` to `javascript:alert(1)`.
+3. Click the "Go" button, which is part of the fake browser. Clicking this button changes the value of the `href` for the "Next >>" link. Before you click the "Go" button, if you hover over the "Next >>" link, the target shown in the hoverbox is:
+   ```code
+   https://xss-game.appspot.com/level5/frame/confirm
+   ```
+   And in fact the `href` value is a relative link, simply `confirm`. After changing `confirm` to `javascript:alert(1)`, the URL is now set to this:
+   ```code
+   https://xss-game.appspot.com/level5/frame/signup?next=javascript:alert(1)
+   ```
+   Click the "Go" button. Now if you hover over that same "Next >>" link, the target shown in the hoverbox is now just:
+   ```
+   javascript:alert(1)
+   ```
+   By the user having edited the URL manually, that link's `href` value had changed to the user's input.
+4. Click the "Next >>" link. The alert pops up and the game sets a new cookie and displays a banner saying that you may now go on to the next level.
+
+I think the lesson here was that if you can't inject any tags you can still inject the `javascript:` resource identifier before the actual Javascript code. I had to click on all four hints until I followed Hint 4's link to [this IETF draft](https://tools.ietf.org/html/draft-hoehrmann-javascript-scheme-00).
 
 
 ## Level 6
