@@ -49,9 +49,9 @@ But I wanted to keep working with Firefox. So I copied Safari's cookie called "l
   level2=b5e530302374aa71cc3028c810b63641;
   level3=d5ce029d0680b3816a349da0d055fcfa;
   ```
-  
+
   Here's how to set a new cookie in FF or Chrome using the console in dev tools:
-  
+
   ```javascript
   document.cookie="level3=d5ce029d0680b3816a349da0d055fcfa";
   ```
@@ -140,11 +140,35 @@ To get through this level you have to do these in order:
 I think the lesson here was that if you can't inject any tags you can still inject the `javascript:` resource identifier before the actual Javascript code. I had to click on all four hints until I followed Hint 4's link to [this IETF draft](https://tools.ietf.org/html/draft-hoehrmann-javascript-scheme-00).
 
 
-## Level 6
-For Level 6 I had to look up the answer. It turns out that the regex was not case sensitive, so this is the successful URL:
+## [Level 6](https://xss-game.appspot.com/level6)
+For Level 6 I had to look up the answer. It turns out that a custom client-side filtering regex was case sensitive when filtering out URLs beginning with `http` or `https`. So this is the successful URL:
+
 ```
 https://xss-game.appspot.com/level6/frame#HTTPS://xss.rocks/xss.js
 ```
+
+Notice that I've used one of the non-malicious Javascript files available at [xss.rocks][4].
+
+I never would have guessed this solution. I did look at the source code and I figured that the regex in the following function was stopping me from injecting an `http` or `https` into the URL. I guess I was being lazy by not taking the regex somewhere and testing it. For this documentation I tested the regex at the w3schools.com ["Try It" page][5] for the Javascript string `match()` method.
+
+This function can be found on line 57 of the source code of the page for Level 6:
+
+```javascript
+      // This will totally prevent us from loading evil URLs!
+      if (url.match(/^https?:\/\//)) {
+        setInnerText(document.getElementById("log"),
+          "Sorry, cannot load a URL containing \"http\".");
+        return;
+      }
+```
+
+The regex is `/^https?:\/\//` and will match `http` or `https`. But if the developer had appended `i` to the regex, then it would have matched any combination of upper and lower case versions of those strings. The case-insensitive regex would be `/^https?:\/\//i`
+
+I guess the lesson in this level was that you should read through all the source code (HTML and JS) to see if the developers wrote any client-side filtering code, and if they made any mistakes in doing so.
+
+
 [1]: https://xss-game.appspot.com/
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
 [3]: http://stackoverflow.com/a/9345102
+[4]: http://xss.rocks/
+[5]: http://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_match_regexp2
