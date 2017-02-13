@@ -1,8 +1,9 @@
-# Notes from [Jason Haddix's][2] Excelent [Hacking with Burp Suite - Tutorial 1][1] Video 
+# Notes from [Jason Haddix's][2] Excellent [Hacking with Burp Suite - Tutorial 1][1] Video
 ## Run Burp Suite with More RAM
 
 Run Burp Suite with 2 GB RAM, which is more than the default:
-```bash
+
+```code
 java -jar -Xmx2g Burp\ Suite\ Free\ Edition.app/Contents/java/app/burpsuite_free.jar
 ```
 
