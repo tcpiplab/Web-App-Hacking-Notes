@@ -35,4 +35,14 @@ I'm running this on OS X Yosemite 10.10.5. Note that I had to append `; FOO="1` 
 
 But I was never successful until I figured out a way to close up the left-over `"` character.
 
+## Screenshot
+
+![Screen shot of Burp Repeater successfully injecting an operating system command against WebGoat][screenshot_1]
+
+The image above is a screenshot of Burp Repeater successfully injecting an operating system command against WebGoat. In this screenshot the underlying OS was Ubuntu and the target app was WebGoat v5.4.
+
+[screenshot_1]: https://raw.githubusercontent.com/tcpiplab/Web-App-Hacking-Notes/master/SQL-Injection/burp-webgoat-command-injection.png "Screen shot of Burp Repeater successfully injecting an operating system command against WebGoat"
+
+
+
 [3]: http://localhost:8081/WebGoat/attack
