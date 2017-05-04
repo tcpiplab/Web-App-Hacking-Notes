@@ -1,7 +1,11 @@
 ## Download & Run WebGoat on OS X
 *Note that I'm running WebGoat on a non-default port, `8081`. This is because I've already got Burp Suite's proxy listening on the default port, `8080`. Also, my browser is already configured to use Burp's proxy.*
 
-Go to the [WebGoat Repository](https://github.com/WebGoat/WebGoat/releases/latest), scroll to the bottom of the page, to the "Downloads" section of the page. Download the `.jar` file. After the download finishes, do this:
+Go to the [WebGoat Repository](https://github.com/WebGoat/WebGoat/releases/latest), scroll to the bottom of the page, to the "Downloads" section of the page. Download the `.jar` file. 
+
+**After the download finishes, disconnect your computer from WiFi and Ethernet. You're about to open up many security holes.**
+
+Now do this:
 
 ```shell
 $ mv ~/Downloads/webgoat-container-7.1-exec.jar /Applications/
