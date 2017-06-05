@@ -27,6 +27,10 @@ Web Hacking 101 was written by [Peter Yaworski][2]. These are my notes from Ch. 
 4. Explore and understand available functionality, noting areas that correspond to vulnerability types
 5. Begin testing functionality mapping vulnerability types to functionality provided
 6. Automate EyeWitness and Nmap scans from the KnockPy and enumall scans
+   ```
+   sudo nmap -sS -A -PN --script=http-title -iL example.com.targets -oA example.com.nmap
+   ```
+   * Note that the `example.com.targets` file is a sorted, uniq-ed list of hostnames from the subdomain enumeration scans described above.
 7. Review mobile application vulnerabilities
 8. Test the API layer, if available, including otherwise inaccessible functionality
 9. Look for private information in GitHub repos with GitRob
