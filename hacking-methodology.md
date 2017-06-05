@@ -6,13 +6,22 @@ Web Hacking 101 was written by [Peter Yaworski][2]. These are my notes from Ch. 
 
 ### HIS SUMMARY:
 
-1. Enumerate all sub domains (if they are in scope) using KnockPy, enumall Recon-ng script and IPV4info.com
+1.
+   1. Enumerate all sub domains (if they are in scope) using [KnockPy](https://github.com/guelfoweb/knock).
 
-  ```bash
-  knockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt
-
-  ```
-
+   ```bash
+   knockpy example.com -w domain/sorted_knock_dnsrecon_fierce_recon-ng.txt
+   ```
+   OR
+   ```
+   knockpy example.com -c -w SecLists/Discovery/DNS/subdomains-top1mil-110000.txt
+   ```
+   1. Jason Haddix's `enumall` [script](https://github.com/jhaddix/domain), which requires `Recon-ng`. Note that, if you're running Kali Linux, [Recon-ng](https://bitbucket.org/LaNMaSteR53/recon-ng) is probably already installed. Also, `recon-ng` can call `altdns`. But installing  [altdns](https://github.com/infosec-au/altdns) is optional.
+   ```
+   enumall.py example.com -a -w SecLists/Discovery/DNS/sorted_knock_dnsrecon_fierce_recon-ng.txt
+   ```
+      * Note that to get `recon-ng` set up with API keys you'll need the very helpful info at [Raikia's Hub](https://raikia.com/recon-ng-api-key-creation/). You'll also need to watch a YouTube video called [Recon-ng:. How to add API keys](https://www.youtube.com/watch?v=EhYNCisebIc).
+   1. `whois` or IPV4info.com.
 2. Start ZAP proxy, visit the main target site and perform a Forced Browse to discover files and directories
 3. Map technologies used with Wappalyzer and Burp Suite (or ZAP) proxy
 4. Explore and understand available functionality, noting areas that correspond to vulnerability types
