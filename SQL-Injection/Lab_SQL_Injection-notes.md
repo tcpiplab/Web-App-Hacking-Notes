@@ -19,4 +19,6 @@ employee_id=112&password=ddddddd&action=Login
 ```
 employee_id=112&password=ddddddd' OR 1=1;--&action=Login
 ```
-1. In the right half of the Repeater window, click the Render tab. You'll see "Welcome Back Neville"
+1. In the right half of the Repeater window, click the Render tab. You'll see "Welcome Back Neville".
+
+Note that, instead of using Burp Repeater, you could just as easily have done it with the intercept proxy and edited the password value before forwarding the POST to the web server. I found that, while either of these works, it was not possible to accomplish through the browser. I suspect that some Javascript is sanitizing the password field value before it gets sent. I searched all the scripts, but couldn't find the code. Moving on.
