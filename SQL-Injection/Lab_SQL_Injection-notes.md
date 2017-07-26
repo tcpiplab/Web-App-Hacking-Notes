@@ -1,4 +1,4 @@
-## **WebGoat LAB:** SQL Injection
+## **WebGoat LAB:** SQL Injection -> Stage 1: String SQL Injection
 
 The goal of this injection is to log in as `Neville`, who has admin privileges.
 This is best accomplished by running your browser through a proxy like Burp or ZAP.
