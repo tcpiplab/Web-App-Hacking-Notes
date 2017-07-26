@@ -44,12 +44,12 @@ employee_id=101 OR 1=1 order by salary desc&action=ViewProfile
 ```
 ![Screen shot showing Neville's profile][screenshot_1]
 
-The image above shows Neville's profile.
+The image above shows Neville's profile. If you've been staring at Larry's profile while you tried dozens of variations of SQLi attacks, you might miss the fact that the actual data on the page has changed to that of Neville. You might be tricked by the blue "Larry" above the name "Neville".
 
 [screenshot_1]: https://raw.githubusercontent.com/tcpiplab/Web-App-Hacking-Notes/master/SQL-Injection/neville.png "Screen shot showing Neville's profile"
 
+
 ### Summary
 This lesson has some quirks that could cause you to waste a lot of time, even though you'd already successfully injected SQL code into the database's SQL interpreter. But I think this may have been the intention of the creators.
-
 
 But instead of concluding that the userid field is not vulnerable to SQLi, let's add an `order by` clause to the SQL injection string. This way the results will be sorted differently. This matters because the web page for viewing a profile only displays one database row at a time. If a successful SQLi returns multiple database rows,  
