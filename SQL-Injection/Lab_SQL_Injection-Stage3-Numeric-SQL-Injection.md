@@ -42,11 +42,11 @@ The `POST` payload will look like this:
 ```
 employee_id=101 OR 1=1 order by salary desc&action=ViewProfile
 ```
-![Screen shot showing Neville's profile][screenshot_1]
+![Screen shot showing Neville's profile][screenshot_2]
 
 The image above shows Neville's profile. If you've been staring at Larry's profile while you tried dozens of variations of SQLi attacks, you might miss the fact that the actual data on the page has changed to that of Neville. You might be tricked by the blue "Larry" above the name "Neville".
 
-[screenshot_1]: https://raw.githubusercontent.com/tcpiplab/Web-App-Hacking-Notes/master/SQL-Injection/neville.png "Screen shot showing Neville's profile"
+[screenshot_2]: https://raw.githubusercontent.com/tcpiplab/Web-App-Hacking-Notes/master/SQL-Injection/neville.png "Screen shot showing Neville's profile"
 
 
 ### Summary
