@@ -49,7 +49,9 @@ The image above shows Neville's profile. If you've been staring at Larry's profi
 [screenshot_2]: https://raw.githubusercontent.com/tcpiplab/Web-App-Hacking-Notes/master/SQL-Injection/neville.png "Screen shot showing Neville's profile"
 
 
-### Summary
+### Lessons Learned
 This lesson has some quirks that could cause you to waste a lot of time, even though you'd already successfully injected SQL code into the database's SQL interpreter. But I think this may have been the intention of the creators.
 
-But instead of concluding that the userid field is not vulnerable to SQLi, let's add an `order by` clause to the SQL injection string. This way the results will be sorted differently. This matters because the web page for viewing a profile only displays one database row at a time. If a successful SQLi returns multiple database rows,  
+Don't conclude that an input field is **not** vulnerable to SQLi just because the returned data doesn't change. You could be, coincidentally, looking at the default sort order.
+
+This matters because, in this lesson at least, the web page for viewing a user's profile only displays one database row at a time. If a successful SQLi returns multiple database rows, you'll only be shown the first or last record, depending on how the query was sorted and depending on how the web application was written.
