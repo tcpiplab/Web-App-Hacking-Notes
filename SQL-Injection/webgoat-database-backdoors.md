@@ -41,7 +41,7 @@ BEGIN
     UPDATE employee SET email='john@hackme.com'WHERE userid = NEW.userid
 ```
 
-WebGoat uses [MongoDB]() as the underlying database. MongoDB does not support triggers. Hence the warning on the page:
-> Note that nothing will actually be executed because the current underlying DB doesn't support triggers.
+WebGoat uses [MongoDB]() as the underlying database. MongoDB does not support triggers. Hence the warning on the final page:
+> Error generating org.owasp.webgoat.lessons.BackDoors
 
 Incidentally, [here is a StackOverflow answer](https://stackoverflow.com/questions/9691316/how-to-listen-for-changes-to-a-mongodb-collection) explaining how to approximate trigger functionality in MongoDB.
