@@ -19,28 +19,29 @@ Also note that I changed the `salary` value to visually distinguish it from the 
 
 ### Stage 2: Inject a backdoor
 
+>Stage 2: Use String SQL Injection to inject a backdoor. The second stage of this lesson is to teach you how to use a vulneable fields to inject the DB work or the backdoor. Now inject a trigger that would act as SQL backdoor. **Note that nothing will actually be executed because the current underlying DB doesn't support triggers.**
 
-```
-CREATE TRIGGER myBackDoor BEFORE INSERT ON employee FOR EACH ROW BEGIN UPDATE employee SET email='john@hackme.com'WHERE userid = NEW.userid
-```
 I like the following definition from [Microsoft](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-trigger-transact-sql):
 > A trigger is a special kind of stored procedure that automatically executes when an event occurs in the database server.
 
 I get the idea that the syntax, permissions, and availability of database triggers differs depending on the database vendor. Here are links to documentation: [Oracle](https://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_7004.htm), [SQLite](https://sqlite.org/lang_createtrigger.html), [PostgreSQL](https://www.postgresql.org/docs/9.1/static/sql-createtrigger.html), and [MySQL](https://dev.mysql.com/doc/refman/5.7/en/create-trigger.html).
 
+Here is the solution to this exercise:
+```
+101; CREATE TRIGGER myBackDoor BEFORE INSERT ON employee FOR EACH ROW BEGIN UPDATE employee SET email='john@hackme.com' WHERE userid = NEW.userid
+```
+
 Here is the same SQL code, for prettified a bit:
 
 ```
+101;
 CREATE TRIGGER myBackDoor BEFORE INSERT ON employee
 FOR EACH ROW
 BEGIN
     UPDATE employee SET email='john@hackme.com'WHERE userid = NEW.userid
 ```
 
-
-
-
 WebGoat uses [MongoDB]() as the underlying database. MongoDB does not support triggers. Hence the warning on the page:
-> foo
+> Note that nothing will actually be executed because the current underlying DB doesn't support triggers.
 
 Incidentally, [here is a StackOverflow answer](https://stackoverflow.com/questions/9691316/how-to-listen-for-changes-to-a-mongodb-collection) explaining how to approximate trigger functionality in MongoDB.
