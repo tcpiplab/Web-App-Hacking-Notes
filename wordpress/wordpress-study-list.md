@@ -17,6 +17,10 @@
 1. I'm not sure if you will go through the live test with our ops team, but you may. If so, you will want to know how to strace PHP stuff looking at network traffic.
 
 1. WordPress
+     1. WordPress Essential Training: [Is WordPress safe and secure?](https://www.linkedin.com/learning/wordpress-essential-training/is-wordpress-safe-and-secure)
+     1. WordPress: [Developing Secure Sites](https://www.linkedin.com/learning/wordpress-developing-secure-sites)
+     1. WordPress Plugin Development: [Develop secure WordPress plugins](https://www.linkedin.com/learning/wordpress-plugin-development/develop-secure-wordpress-plugins)
+     1. WordPress: Understanding Custom Plugins with PHP: [Securing your plugin](https://www.linkedin.com/learning/wordpress-understanding-custom-plugins-with-php/securing-your-plugin)
 
 1. AWS EC2
 
