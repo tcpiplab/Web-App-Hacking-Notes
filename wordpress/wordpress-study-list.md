@@ -32,3 +32,4 @@
 1. **Miscellaneous**
      1. [x] [chroot User Separation](https://help.ubuntu.com/community/BasicChroot)
      1. [x] [.htaccess Rules](https://premium.wpmudev.org/blog/htaccess/) and [x] [Order](https://stackoverflow.com/questions/9943042/htaccess-order-deny-allow-deny)
+     1. [x] [Nginx vs Apache](https://support.pagely.com/hc/en-us/articles/115000020792-Your-guide-to-Pagely-s-NGINX-Apache-and-NGINX-only-modes)
