@@ -28,3 +28,7 @@
      1. See notes from AppSec California.
 
 1. **Phpmyadmin**
+
+1. **Miscellaneous**
+     1. [x] [chroot User Separation](https://help.ubuntu.com/community/BasicChroot)
+     1. [x] [.htaccess Rules](https://premium.wpmudev.org/blog/htaccess/) and [x] [Order](https://stackoverflow.com/questions/9943042/htaccess-order-deny-allow-deny)
