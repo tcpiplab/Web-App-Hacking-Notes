@@ -1,0 +1,25 @@
+
+
+1. Maldet--- Malware scanner. Look into
+     1. how we to add signatures to it and
+     1. anything we can do to improve its functionality. Right now it runs every 24 hours and scans files modified in the last 7 days I believe.
+
+1. Wordpress core + Plugins.
+     1. [x] Get on the mailing lists for vulnerabilities for Wordpress core
+     1. and also for popular plugins such as Yoast (SEO) for example.
+
+1. DDOS Protection provided by AWS.... We use some lower tier plan, but it would be good to just get up to speed on what Amazon is using and offering.
+
+1. Little bit of Ansible. We use this for code deployments.
+
+1. WP command line. Very handy and it will look good if you know how to use it.  http://wp-cli.org/
+
+1. I'm not sure if you will go through the live test with our ops team, but you may. If so, you will want to know how to strace PHP stuff looking at network traffic.
+
+1. WordPress
+
+1. AWS EC2
+
+1. AWS S3
+
+1. Phpmyadmin
