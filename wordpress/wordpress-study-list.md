@@ -22,9 +22,14 @@
      1. WordPress Plugin Development: [Develop secure WordPress plugins](https://www.linkedin.com/learning/wordpress-plugin-development/develop-secure-wordpress-plugins)
      1. WordPress: Understanding Custom Plugins with PHP: [Securing your plugin](https://www.linkedin.com/learning/wordpress-understanding-custom-plugins-with-php/securing-your-plugin)
 
-1. **AWS EC2**
-
-1. **AWS S3**
+1. **AWS**
+     1. **EC2**
+     1. **RDS**
+          1. data at rest encryption for [RDS](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)
+     1. **EBS**
+          1. [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+     1. **S3**
+           1. [Protecting Data Using Server-Side Encryption](http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html)
      1. See notes from AppSec California.
 
 1. **Phpmyadmin**
