@@ -8,8 +8,6 @@
      1. [x] Get on the mailing lists for vulnerabilities for Wordpress core
      1. and also for popular plugins such as Yoast (SEO) for example.
 
-1. **DDOS Protection provided by AWS**.... We use some lower tier plan, but it would be good to just get up to speed on what Amazon is using and offering.
-
 1. Little bit of **Ansible**. We use this for code deployments.
 
 1. **WP command line**. Very handy and it will look good if you know how to use it.  http://wp-cli.org/
@@ -35,6 +33,12 @@ strace php5 index.php 2>&1 | perl -ne 'if (/plugins\/([\w\d-_]*)/ ) { print "$1\
           1. [Amazon EBS Encryption](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
      1. **S3**
            1. [Protecting Data Using Server-Side Encryption](http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html)
+     1. **AWS Shield**
+           1. [DDOS Protection provided by AWS](https://aws.amazon.com/shield/).... We use some lower tier plan, but it would be good to just get up to speed on what Amazon is using and offering.
+     1. **AWS WAF**
+          1. [Use AWS WAF to Mitigate OWASP’s Top 10](https://d0.awsstatic.com/whitepapers/Security/aws-waf-owasp.pdf)
+          1. [AWS WAF Management Console](https://console.aws.amazon.com/waf)
+          1. [What Is AWS WAF and AWS Shield?](http://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html)
      1. See notes from AppSec California.
 
 
