@@ -14,7 +14,12 @@
 
 1. **WP command line**. Very handy and it will look good if you know how to use it.  http://wp-cli.org/
 
-1. I'm not sure if you will go through the live test with our ops team, but you may. If so, you will want to know how to **strace PHP** stuff looking at network traffic.
+1. **strace PHP**
+     1. [x] [strace PHP](https://serverfault.com/questions/144912/how-can-i-tell-which-page-is-creating-a-high-cpu-load-httpd-process). This command is from Media Temple:
+
+```
+strace php5 index.php 2>&1 | perl -ne 'if (/plugins\/([\w\d-_]*)/ ) { print "$1\n" }' | sort | uniq -c | sort -n
+```
 
 1. **Securing WordPress**
      1. [x] WordPress Essential Training: [Is WordPress safe and secure?](https://www.linkedin.com/learning/wordpress-essential-training/is-wordpress-safe-and-secure), etc.
@@ -31,6 +36,7 @@
      1. **S3**
            1. [Protecting Data Using Server-Side Encryption](http://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html)
      1. See notes from AppSec California.
+
 
 1. **Phpmyadmin**
 
