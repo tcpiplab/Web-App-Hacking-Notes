@@ -10,7 +10,10 @@
 
 1. Little bit of **Ansible**. We use this for code deployments.
 
-1. **WP command line**. Very handy and it will look good if you know how to use it.  http://wp-cli.org/
+1. [x] **WP command line**. Very handy and it will look good if you know how to use it.  http://wp-cli.org/
+```
+wp search-replace '127.0.0.1' '10.10.10.10' wp_options --dry-run
+```
 
 1. **strace PHP**
      1. [x] [strace PHP](https://serverfault.com/questions/144912/how-can-i-tell-which-page-is-creating-a-high-cpu-load-httpd-process). This command is from Media Temple:
@@ -42,7 +45,7 @@ strace php5 index.php 2>&1 | perl -ne 'if (/plugins\/([\w\d-_]*)/ ) { print "$1\
      1. See notes from AppSec California.
 
 
-1. **Phpmyadmin**
+1. [x] **Phpmyadmin**
 
 1. **Miscellaneous**
      1. [x] [chroot User Separation](https://help.ubuntu.com/community/BasicChroot)
