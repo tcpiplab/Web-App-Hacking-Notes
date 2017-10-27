@@ -1,8 +1,12 @@
 
 
 1. **Maldet**--- Malware scanner. Look into
-     1. how we to add signatures to it and
-     1. anything we can do to improve its functionality. Right now it runs every 24 hours and scans files modified in the last 7 days I believe.
+     1. [x] Get it working
+     1. Can it see malware inside the wp db?
+     1. Document how to add signatures to it
+     1. Verify that cron.daily is running:
+          1. every 24 hours
+          1. scans files modified in the last 7 days I
 
 1. **Wordpress Core + Plugin Vulnerabilities**.
      1. [x] Get on the mailing lists for vulnerabilities for Wordpress core
